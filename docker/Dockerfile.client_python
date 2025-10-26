@@ -1,6 +1,7 @@
 FROM python:3.10-slim
 
-RUN pip install grpcio grpcio-tools
+COPY client_python/requirements.txt /app/client_python/
+RUN pip install -r requirements.txt
 
 COPY client_python /app/client_python
 COPY proto/file_processor.proto /app/client_python
