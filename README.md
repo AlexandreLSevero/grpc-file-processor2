@@ -1,5 +1,3 @@
-# grpc-file-processor2
-
 # grpc-file-processor2 — Como rodar (Ubuntu 24.04.2 LTS, dev container)
 
 Este README descreve os passos para compilar e executar o servidor C++ e os clientes (C++ e Python) no workspace.
