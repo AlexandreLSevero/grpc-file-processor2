@@ -77,14 +77,18 @@ int main() {
   // Enviar chunks do arquivo
   std::ifstream input_file(input_path, std::ios::binary);
   if (!input_file) {
-    std::cerr << "Erro ao abrir arquivo de entrada" << std::endl;
+    std::cerr << "Erro ao abrir arquivo de entrada\n";
     return 1;
   }
   char buffer[1024];
-  while (input_file.read(buffer, sizeof(buffer))) {
-    RequestChunk chunk;
-    chunk.mutable_data()->set_content(buffer, input_file.gcount());
-    stream->Write(chunk);
+  while (input_file) {
+    input_file.read(buffer, sizeof(buffer));
+    std::streamsize read_bytes = input_file.gcount();
+    if (read_bytes > 0) {
+      RequestChunk chunk;
+      chunk.mutable_data()->set_content(buffer, static_cast<size_t>(read_bytes));
+      stream->Write(chunk);
+    }
   }
   input_file.close();
   stream->WritesDone();
