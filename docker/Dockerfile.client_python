@@ -1,0 +1,12 @@
+FROM python:3.10-slim
+
+RUN pip install grpcio grpcio-tools
+
+COPY client_python /app/client_python
+COPY proto/file_processor.proto /app/client_python
+
+WORKDIR /app/client_python
+
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. file_processor.proto
+
+CMD ["python", "client.py"]
