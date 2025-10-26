@@ -7,9 +7,8 @@ Este README descreve os passos para compilar e executar o servidor C++ e os clie
 Pré-requisitos (instalar no container de desenvolvimento):
 ```bash
 sudo apt-get update
-sudo apt-get install -y build-essential cmake pkg-config protobuf-compiler \
-  libprotobuf-dev libgrpc++-dev grpc-proto python3-pip \
-  imagemagick poppler-utils ghostscript
+sudo apt-get install -y build-essential cmake pkg-config protobuf-compiler protobuf-compiler-grpc \
+  libprotobuf-dev libgrpc++-dev python3-pip imagemagick poppler-utils ghostscript
 ```
 
 1) Gerar stubs a partir do .proto
